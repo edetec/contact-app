@@ -1,0 +1,102 @@
+<form class="form-horizontal" ng-controller="contactAddEditController" ng-model="contact">
+
+	<div class="app-page-header">
+		<div class="page-title">
+			<h3 >Adicionar contato</h3>
+		</div>
+	</div>
+
+	<!-- Form Name -->
+	<legend></legend>
+
+	<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label" >Nome</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="firstname" placeholder="Digite o nome" ng-model="contact.name" ng-class="{invalid: (contact.name=='' || contact.name==null) && submitted == true }">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">Nascimento</label>
+		<div class="col-sm-2">
+			<input type="text" class="form-control" id="lastname"
+				placeholder="Dia" ng-model="contact.birthDay">
+		</div>
+
+		<div class="col-sm-2">
+			<input type="text" class="form-control" id="lastname"
+				placeholder="Mes" ng-model="contact.birthMonth">
+		</div>
+
+		<div class="col-sm-2">
+			<input type="text" class="form-control" id="lastname"
+				placeholder="Ano" ng-model="contact.birthYear">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">CPF</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" id="lastname"
+				placeholder="Digite o cpf" ng-model="contact.cpf">
+		</div>
+
+		<label for="lastname" class="col-sm-1 control-label">RG</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" id="lastname"
+				placeholder="Digite o rg" ng-model="contact.rg">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Telefone</label>
+		<div class="col-sm-6">
+			<div ng-repeat='p in contact.phones track by $index' class="input-group repeater">
+				<input type="text" class="form-control  " placeholder="Digite o telefone" ng-model='contact.phones[$index]'>
+				<span class="input-group-btn">
+        			<button class="btn mybtn" type="button" ng-click='deletePhone($index)'><span class="glyphicon glyphicon-remove "></span></button>
+        		</span>
+			</div>
+		</div>
+		<a ng-click="addMorePhones()"> Adicionar mais </a>
+	</div>
+
+	<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">Email</label>
+		<div class="col-sm-6" >
+			<div ng-repeat='email in contact.emails track by $index' class="input-group repeater">
+				<input type="text" class="form-control" id="lastname" placeholder="Digite o email"  ng-model='contact.emails[$index]'>
+				<span class="input-group-btn">
+        			<button class="btn mybtn" type="button" ng-click='deleteEmail($index)'><span class="glyphicon glyphicon-remove "></span></button>
+      			</span>
+			</div>
+		</div>
+		<a ng-click="addMoreEmails()"> Adicionar mais </a>
+	</div>
+
+	<legend></legend>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="textarea">Endereço</label>
+		<div class="col-sm-6">                     
+			<textarea id="textarea" name="textarea" class="form-control" rows="3" placeholder="Digite o endereço" ng-model="contact.address"></textarea>
+		</div>
+	</div>
+
+	<legend></legend>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="textarea">Observações</label>
+		<div class="col-sm-6">                     
+			<textarea id="textarea" name="textarea" class="form-control" rows="3" placeholder="Digite sua observacão" ng-model="contact.observation"></textarea>
+		</div>
+	</div>
+
+	<legend></legend>
+
+	<div class="actions">
+		<a class="cancel" ng-back>Cancelar</a>
+		<button class="btn btn-default" ng-click="save()">Salvar</button>
+	</div>
+
+</form>

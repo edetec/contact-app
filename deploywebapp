@@ -1,0 +1,1 @@
+cp -Rpvu src/main/webapp/* target/avaliacandidatos-1.0
